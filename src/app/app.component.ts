@@ -6,6 +6,19 @@ import outputs from '../../amplify_outputs.json';
 
 Amplify.configure(outputs);
 
+const latestConfig = Amplify.getConfig();
+
+Amplify.configure({
+  ...latestConfig,
+  API: {
+    Events: {
+      endpoint: outputs.custom.eventEndpoint,
+      apiKey: outputs.custom.eventApiKey,
+      defaultAuthMode: 'apiKey',
+    },
+  },
+});
+
 @Component({
   selector: 'app-root',
   standalone: true,
