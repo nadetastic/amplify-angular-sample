@@ -46,7 +46,7 @@ const eventApiKey = new CfnApiKey(backend.stack, 'CLGEventAPIKey', {
 
 backend.addOutput({
   custom: {
-    eventEndpoint: eventAPI.attrDnsHttp,
+    eventEndpoint: `https://${eventAPI.attrDnsHttp}/event`,
     eventApiKey: eventApiKey.attrApiKey,
   },
 });
